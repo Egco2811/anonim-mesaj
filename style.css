@@ -88,7 +88,7 @@ textarea {
 }
 
 h1 {
-    font-family: 'Comic Sans MS', sans-serif;
+    font-family: 'Comic Sans MS', 'Chalkboard SE', 'Comic Neue', sans-serif;
     color: #4800ff;
     text-shadow: 2px 2px 0px #ffff00;
     margin: 10px 0;
@@ -211,11 +211,13 @@ h1 {
 }
 
 .input-area h3 {
-    font-family: 'Comic Sans MS', sans-serif;
+    font-family: 'Comic Sans MS', 'Chalkboard SE', 'Comic Neue', sans-serif !important;
     color: #4800ff;
     text-shadow: 2px 2px 0px #ffff00;
     margin: 10px 0;
     letter-spacing: -1px;
+    font-size: 1.5em;
+    font-weight: bold;
 }
 
 .input-area p {
