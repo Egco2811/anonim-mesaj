@@ -61,6 +61,7 @@
             border: 2px outset white;
             display: flex;
             justify-content: space-between;
+            cursor: default;
         }
 
         h1 {
@@ -139,14 +140,29 @@
             margin-bottom: 10px;
             background-color: #000033;
         }
+        
         .music-btn {
             font-size: 10px;
             padding: 2px 5px;
             margin: 2px;
         }
 
-        @media (max-width: 600px) {
-            .main-layout { flex-direction: column; }
+        .star-trail {
+            position: absolute;
+            font-size: 14px;
+            pointer-events: none;
+            animation: fadeOut 1s linear forwards;
+            z-index: 99999;
+            user-select: none;
+        }
+
+        @keyframes fadeOut {
+            0% { opacity: 1; transform: scale(1); }
+            100% { opacity: 0; transform: scale(0.5) translateY(20px); }
+        }
+
+        @media (max-width: 700px) {
+            .main-layout { flex-direction: column; width: 100%; margin: 10px; }
             .sidebar { width: auto; border-right: none; border-bottom: 4px ridge #4444ff; }
         }
     </style>
@@ -195,7 +211,7 @@
             
             <div class="window-header">
                 <span>Egco'nun_Anonim_Mesaj_Kutusu.exe</span>
-                <span style="background:silver; color:black; padding:0 4px; border:1px solid gray; cursor:pointer;">X</span>
+                <span style="background:silver; color:black; padding:0 4px; border:1px solid gray;">X</span>
             </div>
 
             <div class="marquee-box">
@@ -264,6 +280,24 @@
                 }, 5000); 
             }, 500); 
         }
+
+        const colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#00ffff', '#ff00ff'];
+
+        document.addEventListener('mousemove', function(e) {
+            const star = document.createElement('div');
+            star.className = 'star-trail';
+            star.innerHTML = '★'; 
+            
+            star.style.left = e.pageX + 'px';
+            star.style.top = e.pageY + 'px';
+            star.style.color = colors[Math.floor(Math.random() * colors.length)];
+            
+            document.body.appendChild(star);
+
+            setTimeout(() => {
+                star.remove();
+            }, 1000);
+        });
     </script>
 </body>
 </html>
