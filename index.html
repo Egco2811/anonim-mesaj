@@ -4,168 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>~*~ Egco'nun Dünyası ~*~</title>
-    <style>
-        body {
-            background-color: #000033; 
-            background-image: 
-                radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 3px),
-                radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 2px),
-                radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 3px);
-            background-size: 550px 550px, 350px 350px, 250px 250px; 
-            background-position: 0 0, 40px 60px, 130px 270px;
-            font-family: 'Courier New', Courier, monospace; 
-            color: #CCCCCC;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
-            cursor: help; 
-        }
-
-        .main-layout {
-            display: flex;
-            width: 95%;
-            max-width: 800px;
-            border: 4px ridge #4444ff; 
-            background-color: #000000;
-        }
-
-        .sidebar {
-            width: 180px;
-            background-color: #000066;
-            border-right: 4px ridge #4444ff;
-            padding: 15px;
-            text-align: center;
-            display: flex; 
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .content-area {
-            flex: 1;
-            padding: 20px;
-            background-color: #c0c0c0; 
-            color: black;
-            text-align: center;
-            border-left: 2px solid white;
-        }
-
-        .window-header {
-            background: linear-gradient(to right, #000080, #1084d0);
-            color: white;
-            padding: 4px;
-            font-weight: bold;
-            font-family: 'Tahoma', sans-serif;
-            margin-bottom: 10px;
-            border: 2px outset white;
-            display: flex;
-            justify-content: space-between;
-            cursor: default;
-        }
-
-        h1 {
-            font-family: 'Comic Sans MS', sans-serif;
-            color: #4800ff;
-            text-shadow: 2px 2px 0px #ffff00;
-            margin: 10px 0;
-            letter-spacing: -1px;
-        }
-
-        .marquee-box {
-            background: black;
-            color: #00ff00; 
-            font-family: 'Lucida Console', monospace;
-            border: 3px inset #808080;
-            margin-bottom: 20px;
-            padding: 5px;
-            font-size: 14px;
-        }
-
-        textarea {
-            width: 90%;
-            height: 120px;
-            background-color: #ffffcc; 
-            color: #000080;
-            font-family: 'Courier New', monospace;
-            font-size: 14px;
-            border: 3px inset #dcdcdc;
-            padding: 10px;
-            margin-bottom: 10px;
-            resize: none;
-        }
-
-        button {
-            background-color: #d4d0c8;
-            color: black;
-            font-weight: bold;
-            border: 3px outset white;
-            padding: 5px 15px;
-            cursor: pointer;
-            font-size: 14px;
-            font-family: 'Tahoma', sans-serif;
-        }
-        button:active { border-style: inset; }
-
-        .blink { animation: blinker 1s linear infinite; color: red; font-weight: bold; }
-        @keyframes blinker { 50% { opacity: 0; } }
-
-        .construction-bar {
-            background: repeating-linear-gradient(
-                45deg,
-                #ffff00,
-                #ffff00 10px,
-                #000000 10px,
-                #000000 20px
-            );
-            height: 15px;
-            width: 100%;
-            margin: 15px 0;
-            border: 1px solid black;
-        }
-
-        #success-message {
-            display: none;
-            color: blue;
-            font-weight: bold;
-            background-color: #ff99cc; 
-            border: 2px dashed blue;
-            padding: 10px;
-            margin-top: 10px;
-        }
-
-        .widget-box {
-            border: 2px groove white;
-            padding: 5px;
-            margin-bottom: 10px;
-            background-color: #000033;
-        }
-        
-        .music-btn {
-            font-size: 10px;
-            padding: 2px 5px;
-            margin: 2px;
-        }
-
-        .star-trail {
-            position: absolute;
-            font-size: 14px;
-            pointer-events: none;
-            animation: fadeOut 1s linear forwards;
-            z-index: 99999;
-            user-select: none;
-        }
-
-        @keyframes fadeOut {
-            0% { opacity: 1; transform: scale(1); }
-            100% { opacity: 0; transform: scale(0.5) translateY(20px); }
-        }
-
-        @media (max-width: 700px) {
-            .main-layout { flex-direction: column; width: 100%; margin: 10px; }
-            .sidebar { width: auto; border-right: none; border-bottom: 4px ridge #4444ff; }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -179,6 +18,12 @@
             <div style="color: #00ffff; font-size: 12px; margin-top: 10px;">
                 DURUM: <span style="color: #00ff00;">ÇEVRİMİÇİ</span>
             </div>
+            
+            <br>
+
+            <a href="message_viewer.html" style="text-decoration: none;">
+                <button style="width: 100%; cursor: pointer;">MESAJ GÖRÜNTÜLEYİCİ</button>
+            </a>
             
             <br>
 

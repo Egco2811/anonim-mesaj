@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>~*~ Mesaj Görüntüleyici ~*~</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</head>
+<body>
+
+    <div class="tool-layout">
+        <div class="window-header">
+            <span>Admin_Panel.exe</span>
+            <span style="background:silver; color:black; padding:0 4px; border:1px solid gray;"><a href="index.html">X</a></span>
+        </div>
+
+        <div class="input-area">
+            <h3 style="margin-top:0; font-family:'MS Sans Serif'">Mesaj Görüntüleyici</h3>
+            <p style="font-size:12px;">Google Sheet'ten kopyaladığın mesajı aşağıya yapıştır:</p>
+            <textarea id="rawInput" class="viewer-textarea" placeholder="Mesajı buraya yapıştır..."></textarea>
+            <br>
+            <button onclick="generatePopup()">GÖRÜNTÜLE</button>
+        </div>
+    </div>
+
+    <div class="popup-overlay" id="overlay">
+        <div class="popup-window">
+            <div class="window-header">
+                <span>Yeni_Mesaj.msg</span>
+                <span style="background:silver; color:black; padding:0 4px; border:1px solid gray; cursor:pointer;" onclick="closePopup()">X</span>
+            </div>
+            <div class="popup-content">
+                <div class="popup-icon">✉️</div>
+                <div id="messageOutput"></div>
+                <br style="clear:both;">
+                
+                <div style="text-align:center; margin-top:20px;" data-html2canvas-ignore="true">
+                    <button onclick="closePopup()">Tamam</button>
+                    <button onclick="copyImage()">Resim Olarak Kopyala</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function generatePopup() {
+            const input = document.getElementById('rawInput').value;
+            if(input.trim() === "") return;
+
+            const formatted = input.replace(/\n/g, "<br>");
+            
+            document.getElementById('messageOutput').innerHTML = formatted;
+            document.getElementById('overlay').style.display = 'flex';
+        }
+
+        function closePopup() {
+            document.getElementById('overlay').style.display = 'none';
+        }
+
+        function copyImage() {
+            const element = document.querySelector(".popup-window");
+            html2canvas(element, {
+                backgroundColor: null, 
+                scale: 2 
+            }).then(canvas => {
+                canvas.toBlob(blob => {
+                    navigator.clipboard.write([
+                        new ClipboardItem({ 'image/png': blob })
+                    ]).then(() => {
+                        alert("Resim panoya kopyalandı!");
+                    }).catch(err => {
+                        console.error("Kopyalama hatası:", err);
+                        alert("Kopyalama başarısız oldu. Tarayıcı izinlerini kontrol edin.");
+                    });
+                });
+            });
+        }
+
+        const colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#00ffff', '#ff00ff'];
+
+        document.addEventListener('mousemove', function(e) {
+            const star = document.createElement('div');
+            star.className = 'star-trail';
+            star.innerHTML = '★'; 
+            
+            star.style.left = e.pageX + 'px';
+            star.style.top = e.pageY + 'px';
+            star.style.color = colors[Math.floor(Math.random() * colors.length)];
+            
+            document.body.appendChild(star);
+
+            setTimeout(() => {
+                star.remove();
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
