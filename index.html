@@ -42,14 +42,6 @@
             gap: 15px;
         }
 
-        .sidebar-link {
-            color: #00ffff;
-            text-decoration: underline;
-            font-size: 14px;
-            cursor: pointer;
-        }
-        .sidebar-link:hover { color: #ff00ff; background-color: #ffffff; }
-
         .content-area {
             flex: 1;
             padding: 20px;
@@ -107,9 +99,10 @@
             color: black;
             font-weight: bold;
             border: 3px outset white;
-            padding: 5px 25px;
+            padding: 5px 15px;
             cursor: pointer;
-            font-size: 16px;
+            font-size: 14px;
+            font-family: 'Tahoma', sans-serif;
         }
         button:active { border-style: inset; }
 
@@ -140,6 +133,18 @@
             margin-top: 10px;
         }
 
+        .widget-box {
+            border: 2px groove white;
+            padding: 5px;
+            margin-bottom: 10px;
+            background-color: #000033;
+        }
+        .music-btn {
+            font-size: 10px;
+            padding: 2px 5px;
+            margin: 2px;
+        }
+
         @media (max-width: 600px) {
             .main-layout { flex-direction: column; }
             .sidebar { width: auto; border-right: none; border-bottom: 4px ridge #4444ff; }
@@ -151,15 +156,37 @@
     <div class="main-layout">
         
         <div class="sidebar">
-            <div style="color: yellow; font-size: 20px;">★ MENÜ ★</div>
-            <div class="sidebar-link">Ana Sayfa</div>
+            <div style="color: yellow; font-size: 18px; border-bottom: 1px dashed white; padding-bottom:5px;">
+                ★ MENÜ ★
+            </div>
+            
+            <div style="color: #00ffff; font-size: 12px; margin-top: 10px;">
+                DURUM: <span style="color: #00ff00;">ÇEVRİMİÇİ</span>
+            </div>
+            
+            <br>
+
+            <div class="widget-box">
+                <div style="color:white; font-size:11px; margin-bottom:5px;">♫ Müzik Çalar ♫</div>
+                <audio id="bgMusic" loop>
+                    <source src="music.mp3" type="audio/mp3">
+                </audio>
+                <button class="music-btn" onclick="document.getElementById('bgMusic').play()">OYNAT</button>
+                <button class="music-btn" onclick="document.getElementById('bgMusic').pause()">DURDUR</button>
+            </div>
+
+            <div style="font-size: 11px; color: silver; margin-top: 10px;">
+                TARİH / SAAT:
+                <div id="liveClock" style="color: yellow; margin-top:5px;"></div>
+            </div>
+
             <br>
             <div style="font-size: 10px; color: white;">
                 En iyi <br>Internet Explorer 6.0<br>ile görüntülenir.
             </div>
             <br>
             <div style="border: 1px solid white; padding: 2px;">
-                <span class="blink">Yeni!</span><br>
+                <span class="blink">DİKKAT!</span><br>
                 Sayfamız yapım aşamasındadır.<br>
             </div>
         </div>
@@ -168,7 +195,7 @@
             
             <div class="window-header">
                 <span>Egco'nun_Anonim_Mesaj_Kutusu.exe</span>
-                <span style="background:silver; color:black; padding:0 4px; border:1px solid gray;">X</span>
+                <span style="background:silver; color:black; padding:0 4px; border:1px solid gray; cursor:pointer;">X</span>
             </div>
 
             <div class="marquee-box">
@@ -191,7 +218,7 @@
             >
                 <textarea name="entry.611512681" placeholder="Mesajını buraya yaz..." required></textarea>
                 <br>
-                <button type="submit" id="submitBtn">Gönder</button>
+                <button type="submit" id="submitBtn">GÖNDER</button>
             </form>
 
             <div id="success-message">
@@ -211,6 +238,15 @@
     </div>
 
     <script>
+        function updateClock() {
+            var now = new Date();
+            var timeString = now.toLocaleTimeString('tr-TR');
+            var dateString = now.toLocaleDateString('tr-TR');
+            document.getElementById('liveClock').innerHTML = dateString + "<br>" + timeString;
+        }
+        setInterval(updateClock, 1000); 
+        updateClock(); 
+
         function showThankYou() {
             var btn = document.getElementById('submitBtn');
             btn.disabled = true;
