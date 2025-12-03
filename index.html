@@ -1,150 +1,186 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>~*~ Bana Mesaj Gönder ~*~</title>
+    <title>~*~ Egco'nun Dünyası ~*~</title>
     <style>
         body {
-            background-color: #000000;
+            background-color: #000033; 
             background-image: 
-                linear-gradient(45deg, #000000 25%, #1a1a1a 25%, #1a1a1a 50%, #000000 50%, #000000 75%, #1a1a1a 75%, #1a1a1a 100%);
-            background-size: 20px 20px;
-            font-family: 'Verdana', 'Arial', sans-serif;
-            color: #000;
+                radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 3px),
+                radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 2px),
+                radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 3px);
+            background-size: 550px 550px, 350px 350px, 250px 250px; 
+            background-position: 0 0, 40px 60px, 130px 270px;
+            font-family: 'Courier New', Courier, monospace; 
+            color: #CCCCCC;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
             margin: 0;
+            cursor: help; 
         }
 
-        .window {
+        .main-layout {
+            display: flex;
+            width: 95%;
+            max-width: 800px;
+            border: 4px ridge #4444ff; 
+            background-color: #000000;
+        }
+
+        .sidebar {
+            width: 180px;
+            background-color: #000066;
+            border-right: 4px ridge #4444ff;
+            padding: 15px;
+            text-align: center;
+            display: flex; 
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .sidebar-link {
+            color: #00ffff;
+            text-decoration: underline;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        .sidebar-link:hover { color: #ff00ff; background-color: #ffffff; }
+
+        .content-area {
+            flex: 1;
+            padding: 20px;
             background-color: #c0c0c0; 
-            width: 90%;
-            max-width: 600px;
-            border: 3px solid;
-            border-color: #ffffff #808080 #808080 #ffffff; 
-            padding: 2px;
-            box-shadow: 10px 10px 0px #333;
+            color: black;
+            text-align: center;
+            border-left: 2px solid white;
         }
 
-        .title-bar {
-            background: linear-gradient(90deg, #000080, #1084d0);
-            padding: 5px 10px;
+        .window-header {
+            background: linear-gradient(to right, #000080, #1084d0);
             color: white;
+            padding: 4px;
             font-weight: bold;
-            font-family: 'MS Sans Serif', Geneva, sans-serif;
+            font-family: 'Tahoma', sans-serif;
+            margin-bottom: 10px;
+            border: 2px outset white;
             display: flex;
             justify-content: space-between;
-            align-items: center;
-        }
-
-        .title-bar-buttons span {
-            display: inline-block;
-            width: 16px;
-            height: 14px;
-            background-color: #c0c0c0;
-            border: 1px solid;
-            border-color: #fff #808080 #808080 #fff;
-            margin-left: 2px;
-        }
-
-        .content {
-            padding: 20px;
-            text-align: center;
         }
 
         h1 {
-            font-family: 'Comic Sans MS', 'Chalkboard SE', sans-serif;
-            color: #4400ff;
-            text-shadow: 2px 2px #ffff00;
-            margin-top: 0;
+            font-family: 'Comic Sans MS', sans-serif;
+            color: #4800ff;
+            text-shadow: 2px 2px 0px #ffff00;
+            margin: 10px 0;
+            letter-spacing: -1px;
         }
 
-        .marquee-container {
-            background-color: #000;
-            color: #00ff00;
-            font-family: 'Courier New', monospace;
-            border: 2px inset #fff;
+        .marquee-box {
+            background: black;
+            color: #00ff00; 
+            font-family: 'Lucida Console', monospace;
+            border: 3px inset #808080;
             margin-bottom: 20px;
             padding: 5px;
+            font-size: 14px;
         }
 
         textarea {
-            width: 95%;
-            height: 150px;
-            background-color: #fff;
-            color: #000;
+            width: 90%;
+            height: 120px;
+            background-color: #ffffcc; 
+            color: #000080;
             font-family: 'Courier New', monospace;
             font-size: 14px;
-            border: 2px inset #dcdcdc;
-            padding: 5px;
-            margin-bottom: 15px;
+            border: 3px inset #dcdcdc;
+            padding: 10px;
+            margin-bottom: 10px;
             resize: none;
         }
 
         button {
-            background-color: #c0c0c0;
-            color: #000;
-            font-family: 'MS Sans Serif', sans-serif;
+            background-color: #d4d0c8;
+            color: black;
             font-weight: bold;
-            border: 2px solid;
-            border-color: #ffffff #808080 #808080 #ffffff;
-            padding: 5px 20px;
+            border: 3px outset white;
+            padding: 5px 25px;
             cursor: pointer;
-            text-transform: uppercase;
+            font-size: 16px;
         }
+        button:active { border-style: inset; }
 
-        button:active {
-            border-color: #808080 #ffffff #ffffff #808080;
-            transform: translate(1px, 1px);
-        }
+        .blink { animation: blinker 1s linear infinite; color: red; font-weight: bold; }
+        @keyframes blinker { 50% { opacity: 0; } }
 
-        .footer {
-            margin-top: 20px;
-            font-size: 10px;
-            border-top: 2px groove #fff;
-            padding-top: 10px;
-        }
-
-        .counter {
-            background: #000;
-            color: #00ff00;
-            font-family: 'Courier New', monospace;
-            padding: 2px 5px;
-            border: 1px solid #808080;
-            letter-spacing: 3px;
+        .construction-bar {
+            background: repeating-linear-gradient(
+                45deg,
+                #ffff00,
+                #ffff00 10px,
+                #000000 10px,
+                #000000 20px
+            );
+            height: 15px;
+            width: 100%;
+            margin: 15px 0;
+            border: 1px solid black;
         }
 
         #success-message {
             display: none;
             color: blue;
             font-weight: bold;
-            background-color: yellow;
-            border: 1px dashed black;
+            background-color: #ff99cc; 
+            border: 2px dashed blue;
             padding: 10px;
             margin-top: 10px;
+        }
+
+        @media (max-width: 600px) {
+            .main-layout { flex-direction: column; }
+            .sidebar { width: auto; border-right: none; border-bottom: 4px ridge #4444ff; }
         }
     </style>
 </head>
 <body>
 
-    <div class="window">
-        <div class="title-bar">
-            <span>Egco'nun_Anonim_Mesaj_Kutusu.exe</span>
-            <div class="title-bar-buttons">
-                <span></span><span></span><span></span>
+    <div class="main-layout">
+        
+        <div class="sidebar">
+            <div style="color: yellow; font-size: 20px;">★ MENÜ ★</div>
+            <div class="sidebar-link">Ana Sayfa</div>
+            <br>
+            <div style="font-size: 10px; color: white;">
+                En iyi <br>Internet Explorer 6.0<br>ile görüntülenir.
+            </div>
+            <br>
+            <div style="border: 1px solid white; padding: 2px;">
+                <span class="blink">Yeni!</span><br>
+                Sayfamız yapım aşamasındadır.<br>
             </div>
         </div>
 
-        <div class="content">
-            <div class="marquee-container">
-                <marquee scrollamount="5">*** BANA MESAJ GÖNDER *** EGCO *** MESAJLAR TAMAMEN ANONİMDİR ***</marquee>
+        <div class="content-area">
+            
+            <div class="window-header">
+                <span>Egco'nun_Anonim_Mesaj_Kutusu.exe</span>
+                <span style="background:silver; color:black; padding:0 4px; border:1px solid gray;">X</span>
             </div>
 
-            <h1>Ne Düşündüğünü Yaz</h1>            
-            <hr style="border: 1px inset white; margin-bottom: 15px;">
+            <div class="marquee-box">
+                <marquee scrollamount="6">*** BANA MESAJ GÖNDER *** EGCO *** MESAJLAR TAMAMEN ANONİMDİR *** HOŞGELDİNİZ ***</marquee>
+            </div>
+
+            <h1>Ne Düşündüğünü Yaz</h1>     
+            
+            <div class="construction-bar"></div>
+            <p style="font-size: 12px; font-family: Tahoma;">
+                <span class="blink">>></span> Lütfen aşağıdaki formu doldurunuz <span class="blink"><<</span>
+            </p>
 
             <form 
                 action="https://docs.google.com/forms/d/e/1FAIpQLSeoxcs9bkqnuepMGKK9HNI6d96oZfMLRNtjyp7L5eKYiD7iYA/formResponse" 
@@ -153,16 +189,21 @@
                 id="anonForm"
                 onsubmit="showThankYou()"
             >
-                <textarea name="entry.611512681" placeholder="Type ur message here..." required></textarea>
+                <textarea name="entry.611512681" placeholder="Mesajını buraya yaz..." required></textarea>
                 <br>
-                <button type="submit">Gönder</button>
+                <button type="submit" id="submitBtn">Gönder</button>
             </form>
 
-            <div id="success-message">Meşazını aldım kardeşim güçlü bir türkiye için sen davar mısın.<br></div>
-            
-            <div class="footer">
-                <span class="counter">Mesaj Sayısı: 1234</span>
+            <div id="success-message">
+                ♫ Meşazını aldım kardeşim güçlü bir türkiye için sen davar mısın. ♫<br> 
             </div>
+            
+            <br><br>
+            <hr noshade>
+            <p style="font-size: 10px;">
+                Tüm hakları saklıdır &copy; 2002 Egco.<br>
+                İstanbul / Türkiye
+            </p>
 
             <iframe name="hidden_iframe" style="display:none;"></iframe>
             
@@ -171,14 +212,21 @@
 
     <script>
         function showThankYou() {
+            var btn = document.getElementById('submitBtn');
+            btn.disabled = true;
+            btn.innerText = "Lütfen Bekleyiniz...";
+
             setTimeout(() => {
                 document.getElementById('anonForm').reset(); 
                 document.getElementById('success-message').style.display = 'block';
                 
+                btn.disabled = false;
+                btn.innerText = "GÖNDER";
+
                 setTimeout(() => {
                     document.getElementById('success-message').style.display = 'none';
-                }, 5000);
-            }, 5000); 
+                }, 5000); 
+            }, 500); 
         }
     </script>
 </body>
