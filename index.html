@@ -5,10 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>~*~ Egco'nun Dünyası ~*~</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 </head>
 <body>
 
-    <div class="main-layout">
+    <div class="main-layout" id="mainLayout">
         
         <div class="sidebar">
             <div style="color: yellow; font-size: 18px; border-bottom: 1px dashed white; padding-bottom:5px;">
@@ -21,9 +22,7 @@
             
             <br>
 
-            <a href="message_viewer.html" style="text-decoration: none;">
-                <button style="width: 100%; cursor: pointer;">MESAJ GÖRÜNTÜLEYİCİ</button>
-            </a>
+            <button onclick="switchToViewer()" style="width: 100%; cursor: pointer;">MESAJ GÖRÜNTÜLEYİCİ</button>
             
             <br>
 
@@ -101,61 +100,47 @@
         </div>
     </div>
 
-    <script>
-        document.getElementById('volumeSlider').addEventListener('input', function(e) {
-            document.getElementById('bgMusic').volume = e.target.value;
-        });
+    <div class="tool-layout" id="viewerLayout">
+        <div class="window-header">
+            <span>Admin_Panel.exe</span>
+            <span style="background:silver; color:black; padding:0 4px; border:1px solid gray; cursor:pointer;" onclick="switchToMain()">X</span>
+        </div>
 
-        function updateClock() {
-            var now = new Date();
-            var timeString = now.toLocaleTimeString('tr-TR');
-            var dateString = now.toLocaleDateString('tr-TR');
-            document.getElementById('liveClock').innerHTML = dateString + "<br>" + timeString;
-        }
-        setInterval(updateClock, 1000); 
-        updateClock(); 
+        <div class="input-area">
+            <h3 style="margin-top:0; font-family:'MS Sans Serif'">Mesaj Görüntüleyici</h3>
+            <p style="font-size:12px;">Google Sheet'ten kopyaladığın mesajı aşağıya yapıştır:</p>
+            <textarea id="rawInput" class="viewer-textarea" placeholder="Mesajı buraya yapıştır..."></textarea>
+            <br>
+            <button onclick="generatePopup()">GÖRÜNTÜLE</button>
+            <br><br>
+            <button onclick="switchToMain()">ANA MENÜYE DÖN</button>
+        </div>
+    </div>
 
-        function showThankYou() {
-            var btn = document.getElementById('submitBtn');
-            btn.disabled = true;
-            btn.innerText = "Lütfen Bekleyiniz...";
-
-            setTimeout(() => {
-                document.getElementById('anonForm').reset(); 
-                document.getElementById('success-message').style.display = 'block';
+    <div class="popup-overlay" id="overlay">
+        <div class="popup-window">
+            <div class="window-header">
+                <span>Yeni_Mesaj.msg</span>
+                <span style="background:silver; color:black; padding:0 4px; border:1px solid gray; cursor:pointer;" onclick="closePopup()">X</span>
+            </div>
+            <div class="popup-content">
+                <div class="popup-icon">✉️</div>
+                <div id="messageOutput"></div>
+                <br style="clear:both;">
                 
-                btn.disabled = false;
-                btn.innerText = "GÖNDER";
+                <div style="text-align:center; margin-top:20px;" data-html2canvas-ignore="true">
+                    <button onclick="closePopup()">Tamam</button>
+                    <button onclick="copyImage()">Resim Olarak Kopyala</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
-                setTimeout(() => {
-                    document.getElementById('success-message').style.display = 'none';
-                }, 5000); 
-            }, 500); 
-        }
-
-        const colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#00ffff', '#ff00ff'];
-        let lastStarTime = 0;
-
-        document.addEventListener('mousemove', function(e) {
-            const now = Date.now();
-            if (now - lastStarTime < 50) return; 
-            
-            lastStarTime = now;
-
-            const star = document.createElement('div');
-            star.className = 'star-trail';
-            star.innerHTML = '★'; 
-            
-            star.style.left = e.pageX + 'px';
-            star.style.top = e.pageY + 'px';
-            star.style.color = colors[Math.floor(Math.random() * colors.length)];
-            
-            document.body.appendChild(star);
-
-            setTimeout(() => {
-                star.remove();
-            }, 1000);
-        });
-    </script>
+    <script src="scripts/effects.js"></script>
+    <script src="scripts/clock.js"></script>
+    <script src="scripts/audio.js"></script>
+    <script src="scripts/form.js"></script>
+    <script src="scripts/navigation.js"></script>
+    <script src="scripts/viewer.js"></script>
 </body>
 </html>

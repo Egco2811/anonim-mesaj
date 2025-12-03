@@ -189,7 +189,7 @@ h1 {
 }
 
 .tool-layout {
-    display: flex;
+    display: none; 
     flex-direction: column;
     width: 95%;
     max-width: 500px;
@@ -206,13 +206,16 @@ h1 {
     text-align: center;
     border: 2px groove white;
     margin: 5px;
-    height: 250px;
+    height: 300px;
     background-color: #e0e0e0; 
 }
 
 .input-area h3 {
-    color: #000080;
-    text-shadow: 1px 1px white;
+    font-family: 'Comic Sans MS', sans-serif;
+    color: #4800ff;
+    text-shadow: 2px 2px 0px #ffff00;
+    margin: 10px 0;
+    letter-spacing: -1px;
 }
 
 .input-area p {
