@@ -34,6 +34,9 @@
                 </audio>
                 <button class="music-btn" onclick="document.getElementById('bgMusic').play()">OYNAT</button>
                 <button class="music-btn" onclick="document.getElementById('bgMusic').pause()">DURDUR</button>
+                <div style="text-align: center;">
+                    <input type="range" id="volumeSlider" class="retro-slider" min="0" max="1" step="0.1" value="0.5">
+                </div>
             </div>
 
             <div style="font-size: 11px; color: silver; margin-top: 10px;">
@@ -60,7 +63,7 @@
             </div>
 
             <div class="marquee-box">
-                <marquee scrollamount="6">*** BANA MESAJ GÖNDER *** EGCO *** MESAJLAR TAMAMEN ANONİMDİR *** HOŞGELDİNİZ ***</marquee>
+                <marquee scrollamount="6">*** HOŞGELDİNİZ *** BANA MESAJ GÖNDERİN *** MESAJLAR TAMAMEN ANONİMDİR ***</marquee>
             </div>
 
             <h1>Ne Düşündüğünü Yaz</h1>     
@@ -99,6 +102,10 @@
     </div>
 
     <script>
+        document.getElementById('volumeSlider').addEventListener('input', function(e) {
+            document.getElementById('bgMusic').volume = e.target.value;
+        });
+
         function updateClock() {
             var now = new Date();
             var timeString = now.toLocaleTimeString('tr-TR');

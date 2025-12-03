@@ -145,6 +145,35 @@ h1 {
     margin: 2px;
 }
 
+.retro-slider {
+    -webkit-appearance: none;
+    width: 80%;
+    height: 6px;
+    background: #000;
+    border: 1px inset #808080;
+    outline: none;
+    margin-top: 5px;
+    cursor: pointer;
+}
+
+.retro-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 10px;
+    height: 14px;
+    background: #c0c0c0;
+    border: 1px outset white;
+    cursor: pointer;
+}
+
+.retro-slider::-moz-range-thumb {
+    width: 10px;
+    height: 14px;
+    background: #c0c0c0;
+    border: 1px outset white;
+    cursor: pointer;
+}
+
 .star-trail {
     position: absolute;
     font-size: 14px;
