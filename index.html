@@ -11,8 +11,8 @@
 
     <div class="main-layout" id="mainLayout">
         
-        <div class="sidebar">
-            <div style="color: yellow; font-size: 18px; border-bottom: 1px dashed white; padding-bottom:5px;">
+        <div class="sidebar left-sidebar">
+            <div class="sidebar-header">
                 ★ MENÜ ★
             </div>
             
@@ -23,65 +23,17 @@
             <br>
 
             <button onclick="switchToViewer()" style="width: 100%; cursor: pointer;">MESAJ GÖRÜNTÜLEYİCİ</button>
+            <br><br>
             
-            <br>
-
-            <div class="widget-box">
-                <div style="color:white; font-size:11px; margin-bottom:5px;">♫ Müzik Çalar ♫</div>
-                
-                <div class="visualizer-container" id="visualizer">
-                    <div class="v-bar b1"></div>
-                    <div class="v-bar b2"></div>
-                    <div class="v-bar b3"></div>
-                    <div class="v-bar b4"></div>
-                    <div class="v-bar b5"></div>
-                    <div class="v-bar b6"></div>
-                    <div class="v-bar b7"></div>
-                    <div class="v-bar b8"></div>
-                    <div class="v-bar b9"></div>
-                    <div class="v-bar b10"></div>
-                    <div class="v-bar b11"></div>
-                    <div class="v-bar b12"></div>
-                </div>
-
-                <audio id="bgMusic" loop preload="none">
-                    <source src="music.mp3" type="audio/mp3">
-                </audio>
-                <div style="margin-top: 5px;">
-                    <button class="music-btn" id="playBtn" onclick="toggleMusic(true)">OYNAT</button>
-                    <button class="music-btn" id="pauseBtn" onclick="toggleMusic(false)">DURDUR</button>
-                </div>
-                <div style="text-align: center;">
-                    <input type="range" id="volumeSlider" class="retro-slider" min="0" max="1" step="0.1" value="0.5">
-                </div>
-            </div>
-
-            <div class="widget-box">
-                <div style="color:white; font-size:11px; margin-bottom:5px;">🎱 Sihirli 8 Top 🎱</div>
-                <div class="ball-wrapper">
-                    <div id="magicBall" class="magic-ball">
-                        <div class="ball-window">
-                            <span id="ballAnswer">8</span>
-                        </div>
-                    </div>
-                </div>
-                <input type="text" id="ballQuestion" placeholder="Sorunu Yaz..." class="retro-input">
-                <button class="music-btn" onclick="ask8Ball()" style="width:100%; margin-top:5px;">CEVABI GÖR</button>
-            </div>
-
             <div style="font-size: 11px; color: silver; margin-top: 10px;">
                 TARİH / SAAT:
                 <div id="liveClock" style="color: yellow; margin-top:5px;"></div>
             </div>
 
             <br>
-            <div style="font-size: 10px; color: white;">
+            
+            <div style="font-size: 10px; color: white; margin-top: auto;">
                 En iyi <br>Internet Explorer 6.0<br>ile görüntülenir.
-            </div>
-            <br>
-            <div style="border: 1px solid white; padding: 2px;">
-                <span class="blink">DİKKAT!</span><br>
-                Sayfamız yapım aşamasındadır.<br>
             </div>
         </div>
 
@@ -128,6 +80,61 @@
 
             <iframe name="hidden_iframe" style="display:none;"></iframe>
             
+        </div>
+
+        <div class="sidebar right-sidebar">
+            <div class="sidebar-header">
+                ★ EĞLENCE ★
+            </div>
+
+            <div class="widget-box" style="margin-top: 10px;">
+                <div style="color:white; font-size:11px; margin-bottom:5px;">♫ Müzik Çalar ♫</div>
+                
+                <div class="visualizer-container" id="visualizer">
+                    <div class="v-bar b1"></div>
+                    <div class="v-bar b2"></div>
+                    <div class="v-bar b3"></div>
+                    <div class="v-bar b4"></div>
+                    <div class="v-bar b5"></div>
+                    <div class="v-bar b6"></div>
+                    <div class="v-bar b7"></div>
+                    <div class="v-bar b8"></div>
+                    <div class="v-bar b9"></div>
+                    <div class="v-bar b10"></div>
+                    <div class="v-bar b11"></div>
+                    <div class="v-bar b12"></div>
+                </div>
+
+                <audio id="bgMusic" loop preload="none">
+                    <source src="music.mp3" type="audio/mp3">
+                </audio>
+                <div style="margin-top: 5px;">
+                    <button class="music-btn" id="playBtn" onclick="toggleMusic(true)">OYNAT</button>
+                    <button class="music-btn" id="pauseBtn" onclick="toggleMusic(false)">DURDUR</button>
+                </div>
+                <div style="text-align: center;">
+                    <input type="range" id="volumeSlider" class="retro-slider" min="0" max="1" step="0.1" value="0.5">
+                </div>
+            </div>
+
+            <div class="widget-box">
+                <div style="color:white; font-size:11px; margin-bottom:5px;">🎱 Sihirli 8 Top 🎱</div>
+                <div class="ball-wrapper">
+                    <div id="magicBall" class="magic-ball">
+                        <div class="ball-window">
+                            <span id="ballAnswer">8</span>
+                        </div>
+                    </div>
+                </div>
+                <input type="text" id="ballQuestion" placeholder="Sorunu Yaz..." class="retro-input">
+                <button class="music-btn" onclick="ask8Ball()" style="width:100%; margin-top:5px;">CEVABI GÖR</button>
+            </div>
+
+            <br>
+            <div style="border: 1px solid white; padding: 2px;">
+                <span class="blink">DİKKAT!</span><br>
+                Sayfamız yapım aşamasındadır.<br>
+            </div>
         </div>
     </div>
 
