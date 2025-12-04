@@ -28,14 +28,45 @@
 
             <div class="widget-box">
                 <div style="color:white; font-size:11px; margin-bottom:5px;">♫ Müzik Çalar ♫</div>
+                
+                <div class="visualizer-container" id="visualizer">
+                    <div class="v-bar b1"></div>
+                    <div class="v-bar b2"></div>
+                    <div class="v-bar b3"></div>
+                    <div class="v-bar b4"></div>
+                    <div class="v-bar b5"></div>
+                    <div class="v-bar b6"></div>
+                    <div class="v-bar b7"></div>
+                    <div class="v-bar b8"></div>
+                    <div class="v-bar b9"></div>
+                    <div class="v-bar b10"></div>
+                    <div class="v-bar b11"></div>
+                    <div class="v-bar b12"></div>
+                </div>
+
                 <audio id="bgMusic" loop preload="none">
                     <source src="music.mp3" type="audio/mp3">
                 </audio>
-                <button class="music-btn" onclick="document.getElementById('bgMusic').play()">OYNAT</button>
-                <button class="music-btn" onclick="document.getElementById('bgMusic').pause()">DURDUR</button>
+                <div style="margin-top: 5px;">
+                    <button class="music-btn" id="playBtn" onclick="toggleMusic(true)">OYNAT</button>
+                    <button class="music-btn" id="pauseBtn" onclick="toggleMusic(false)">DURDUR</button>
+                </div>
                 <div style="text-align: center;">
                     <input type="range" id="volumeSlider" class="retro-slider" min="0" max="1" step="0.1" value="0.5">
                 </div>
+            </div>
+
+            <div class="widget-box">
+                <div style="color:white; font-size:11px; margin-bottom:5px;">🎱 Sihirli 8 Top 🎱</div>
+                <div class="ball-wrapper">
+                    <div id="magicBall" class="magic-ball">
+                        <div class="ball-window">
+                            <span id="ballAnswer">8</span>
+                        </div>
+                    </div>
+                </div>
+                <input type="text" id="ballQuestion" placeholder="Sorunu Yaz..." class="retro-input">
+                <button class="music-btn" onclick="ask8Ball()" style="width:100%; margin-top:5px;">CEVABI GÖR</button>
             </div>
 
             <div style="font-size: 11px; color: silver; margin-top: 10px;">
@@ -142,5 +173,6 @@
     <script src="scripts/form.js"></script>
     <script src="scripts/navigation.js"></script>
     <script src="scripts/viewer.js"></script>
+    <script src="scripts/8ball.js"></script>
 </body>
 </html>
