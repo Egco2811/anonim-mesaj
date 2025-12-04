@@ -30,6 +30,23 @@
                 <div id="liveClock" style="color: yellow; margin-top:5px;"></div>
             </div>
 
+            <div class="widget-box" style="margin-top: 10px;">
+                <div style="color:white; font-size:11px; margin-bottom:5px;">🎮 XOX Oyunu 🎮</div>
+                <div class="xox-status" id="xoxStatus">Sıra Sende: X</div>
+                <div class="xox-board" id="xoxBoard">
+                    <div class="xox-cell" onclick="xoxMove(0)"></div>
+                    <div class="xox-cell" onclick="xoxMove(1)"></div>
+                    <div class="xox-cell" onclick="xoxMove(2)"></div>
+                    <div class="xox-cell" onclick="xoxMove(3)"></div>
+                    <div class="xox-cell" onclick="xoxMove(4)"></div>
+                    <div class="xox-cell" onclick="xoxMove(5)"></div>
+                    <div class="xox-cell" onclick="xoxMove(6)"></div>
+                    <div class="xox-cell" onclick="xoxMove(7)"></div>
+                    <div class="xox-cell" onclick="xoxMove(8)"></div>
+                </div>
+                <button class="music-btn" onclick="resetXox()" style="width:100%; margin-top:5px;">YENİDEN BAŞLAT</button>
+            </div>
+            
             <br>
             
             <div style="font-size: 10px; color: white; margin-top: auto;">
@@ -181,5 +198,6 @@
     <script src="scripts/navigation.js"></script>
     <script src="scripts/viewer.js"></script>
     <script src="scripts/8ball.js"></script>
+    <script src="scripts/game.js"></script>
 </body>
 </html>
