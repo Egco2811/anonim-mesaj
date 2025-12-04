@@ -90,11 +90,14 @@ textarea {
 }
 
 .sidebar-header {
-    color: yellow; 
+    color: #ffff00; 
     font-size: 18px; 
     border-bottom: 1px dashed white; 
     padding-bottom:5px;
-    font-family: 'Comic Sans MS', sans-serif;
+    font-family: 'Comic Sans MS', 'Chalkboard SE', sans-serif;
+    font-weight: bold;
+    display: block;
+    width: 100%;
 }
 
 .content-area {
@@ -236,25 +239,31 @@ h1 {
 .ball-wrapper {
     display: flex;
     justify-content: center;
+    align-items: center;
     margin-bottom: 5px;
+    width: 100%;
 }
 
 .magic-ball {
-    width: 60px; 
-    height: 60px;
-    background: radial-gradient(circle at 30% 30%, #444, #000);
+    width: 90px; 
+    height: 90px;
+    background-color: #000;
+    background: radial-gradient(circle at 30% 30%, #555, #000 70%);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid #333;
+    border: 2px solid #333;
     box-shadow: 2px 2px 5px #000;
     margin: 0 auto;
+    position: relative;
+    z-index: 5;
 }
 
 .ball-window {
-    width: 30px;
-    height: 30px;
+    width: 50px;
+    height: 50px;
+    background-color: #000044;
     background: radial-gradient(circle, #000044, #000088);
     border-radius: 50%;
     border: 2px inset #555;
@@ -263,7 +272,7 @@ h1 {
     justify-content: center;
     text-align: center;
     color: #00ffff;
-    font-size: 8px;
+    font-size: 10px;
     font-weight: bold;
     padding: 1px;
     text-shadow: 0 0 2px cyan;

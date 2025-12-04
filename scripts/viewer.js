@@ -34,7 +34,7 @@ function copyImage() {
         backgroundColor: null, 
         scale: 2 
     }).then(canvas => {
-        canvas.toBlob(blob => {            
+        canvas.toBlob(blob => {
             if (navigator.clipboard && navigator.clipboard.write && typeof ClipboardItem !== "undefined") {
                 try {
                     const item = new ClipboardItem({ 'image/png': blob });
