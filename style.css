@@ -137,10 +137,10 @@ h1 {
         #000000 10px,
         #000000 20px
     );
-    height: 15px;
+    height: 20px;
     width: 100%;
-    margin: 15px 0;
-    border: 1px solid black;
+    margin: 10px 0;
+    border: 2px solid black;
 }
 
 #success-message {
