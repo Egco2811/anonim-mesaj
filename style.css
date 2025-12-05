@@ -44,7 +44,7 @@ button {
 button:active { border-style: inset; }
 
 textarea {
-    width: 90%;
+    width: 94%;
     height: 100px;
     background-color: #ffffcc; 
     color: #000080;
@@ -139,7 +139,7 @@ h1 {
     );
     height: 20px;
     width: 100%;
-    margin: 10px 0;
+    margin: 15px 0;
     border: 2px solid black;
 }
 
