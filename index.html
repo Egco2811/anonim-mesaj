@@ -109,11 +109,13 @@
                 </div>
 
                 <audio id="bgMusic" loop preload="none">
-                    <source src="music.mp3" type="audio/mp3">
+                    <source src="tarkan_simarik.mp3" type="audio/mp3">
                 </audio>
-                <div style="margin-top: 5px;">
+                <div style="margin-top: 5px; display: flex; justify-content: center; gap: 1px;">
+                    <button class="music-btn" onclick="changeTrack(-1)" title="Önceki">&lt;&lt;</button>
                     <button class="music-btn" id="playBtn" onclick="toggleMusic(true)">OYNAT</button>
                     <button class="music-btn" id="pauseBtn" onclick="toggleMusic(false)">DURDUR</button>
+                    <button class="music-btn" onclick="changeTrack(1)" title="Sonraki">&gt;&gt;</button>
                 </div>
                 <div style="text-align: center;">
                     <input type="range" id="volumeSlider" class="retro-slider" min="0" max="1" step="0.1" value="0.5">
